@@ -3,30 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        form{
+            margin-top: 100px
+        }
+        .warning_msg {
+            color: #ae0000;
+            margin: 3px 0px 0px 5px;
+        }
+        .warning_brd {
+            border: 1px solid #ae0000;
+        }
+        .success_brd {
+            border: 1px solid green;
+        }
+    </style>
+
 </head>
 <body>
-<script type="text/javascript" src="JS/regValidation.js"></script>
-
 <form method="post"
       name="regForm"
       onsubmit="regValidation()"
       action="/register.do">
 
+
     <label for="username">User Name: </label>
-    <input id="username" type="text" name="username" placeholder="Name" onblur="Validate('username',1)"><br>
+    <div id = "username_div">
+    <input id="username" type="text" name="username" placeholder="Name" onblur="Validate('username',1)">
+    </div>
 
-    <label for="email">Email adress: </label>
-    <input id="email" type="email" name="email" placeholder="email" onblur="Validate('email',2)"><br>
-
-    <label for="password1">Password: </label>
-    <input id="password1" type="password" name="password1" placeholder="Password"
-           onblur="Validate('password1',3)"><br>
+    <label for="password">Password: </label>
+    <div id = "password_div">
+    <input id="password" type="password" name="password" placeholder="Password"
+           onblur="Validate('password',2)">
+    </div>
 
     <label for="password2">Confirm password: </label>
-    <input id="password2" type="password" name="password2" placeholder="Confirm password"
-           onblur="Validate('password2',4)"><br>
+    <div id = "password2_div">
+        <input id="password2" type="password" name="password2" placeholder="Confirm password"
+           onblur="Validate('password2',3); ValidatePassMatch('password2','password','password2')">
+    </div>
+
+    <meter max="5" id="password-strength-meter"></meter>
+    <p id="password-strength-text"></p><br>
 
     <input type="submit" value="Submit">
 </form>
+
+<script type="text/javascript" src="JS/regValidation.js"></script>
+
 </body>
 </html>
